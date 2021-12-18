@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta charset = "UTF-8">
+<title>Search by First or Last Name</title>
+</head>
+
+<style>
+
+h1{ margin-bottom : 40px;}
+label,button { margin:4px ;}
+
+<script>
+
+var callAPI = (firstName,lastName) => {
+             var myHeaders = new Headers();
+             myHeaders.append("Content-Type","application/json");
+var raw = JSON.stringify({"firstName":firstName,"lastName":lastName})
+var requestOptions = {
+    method : 'POST',
+		headers : myHeaders,
+		body : raw,
+		redirect : 'follow'
+	};
+	
+	fetch("https://qptqg9csaf.execute-api.us-west-2.amazonaws.com/dev",requestOptions)
+	.then(response => response.text())
+	.then(result => alert(JSON.parse(result).body))
+	.catch(error => console.log('error',error));
+	}
+</script>
+
+<body>
+
+<h1 align = "center"> Search Customers </h1>
+
+<form align = "center" >
+  <label >First or Last Name</label>
+  <input type = "text" placeholder = "" name = "search"style = "width :300px">
+  <button type = "button" onclick = "callAPI(document.getElementById('fname').value,document.getElementById('lname').value)">Call API>Search</button>
+
+</form>
+<form align = "center">
+  <input type = "textarea" style = "height : 300px ;width : 450px ;margin:15px" >
+</form>
+
+</body>
+</html>
