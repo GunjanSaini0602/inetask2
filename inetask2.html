@@ -27,6 +27,9 @@ var requestOptions = {
 	.then(result => alert(JSON.parse(result).body))
 	.catch(error => console.log('error',error));
 	}
+      <!-- document.getElementById('button').onclick = function() { -->
+      <!-- document.getElementById('info').innerHTML = response; -->
+}
 </script>
 
 <body>
@@ -35,12 +38,12 @@ var requestOptions = {
 
 <form align = "center" >
   <label >First or Last Name</label>
-  <input type = "text" placeholder = "" name = "search"style = "width :300px">
+  <input type = "text" placeholder = "" id = "search"style = "width :300px">
   <button type = "button" onclick = "callAPI(document.getElementById('fname').value,document.getElementById('lname').value)">Call API>Search</button>
 
 </form>
 <form align = "center">
-  <input type = "textarea" style = "height : 300px ;width : 450px ;margin:15px" >
+  <input type = "textarea" id = "info" style = "height : 300px ;width : 450px ;margin:15px" >
 </form>
 
 </body>
